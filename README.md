@@ -50,10 +50,8 @@ const toAssociativeArray = require('object-to-associative-array');
 let obj = {
   a: 1,
   c: {
-    d: 4,
     e: ['e1', 'e2'],
     g: {
-      h: 8,
       i: 9,
       j: [
         {
@@ -66,7 +64,7 @@ let obj = {
 };
 
 let arr = toAssociativeArray(obj);
-// [{"a":1},{"c":[{"d":4},{"e":[{"0":"e1"},{"1":"e2"}]},{"g":[{"h":8},{"i":9},{"j":[{"0":[{"k":11},{"l":12}]}]}]}]}]
+// [{"a":1},{"c":[{"e":[{"0":"e1"},{"1":"e2"}]},{"g":[{"i":9},{"j":[{"0":[{"k":11},{"l":12}]}]}]}]}]
 ```
 
 #### Shallow Conversion
@@ -92,9 +90,7 @@ let obj = {
 };
 
 let arr = toAssociativeArray(obj, false);
-
-let sortedArr = keySort(arr, false);
-[{"a":1},{"c":{"d":4,"e":["e1","e2"],"g":{"h":8,"i":9,"j":[{"k":11,"l":12}]}}}]
+// [{"a":1},{"c":{"e":["e1","e2"],"g":{"i":9,"j":[{"k":11,"l":12}]}}}]
 ```
 
 ## External Dependencies

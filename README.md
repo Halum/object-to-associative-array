@@ -74,10 +74,8 @@ const toAssociativeArray = require('./index');
 let obj = {
   a: 1,
   c: {
-    d: 4,
     e: ['e1', 'e2'],
     g: {
-      h: 8,
       i: 9,
       j: [
         {

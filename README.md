@@ -132,3 +132,6 @@ N/A
 **Original Author**
 
 * [Sajjad Hossain](https://github.com/Halum)
+
+## Lisence
+[MIT](https://github.com/Halum/object-to-associative-array/blob/master/LICENSE) 

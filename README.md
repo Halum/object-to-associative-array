@@ -2,9 +2,8 @@
 
 ## Introduction
 
-
-Sorts an array by key, maintaining key to data correlations. This is useful mainly for associative arrays.
-This is a implementation of [PHP ksort()](http://php.net/manual/en/function.ksort.php) without any **sort_flags**.
+Convert and array or object to an [associative array](https://en.wikipedia.org/wiki/Associative_array).
+Something like [PHP array](http://php.net/manual/en/language.types.array.php).
 
 ## Installation
 
@@ -16,7 +15,7 @@ NODE v0.8.0 or higher
 ## I/O
 
 #### Input
-- Input should be an object.
+- Input should be an object / array of objects.
 - Object values can be primitive data, object or array.
 #### Output
 - Returns an associative array.
@@ -24,9 +23,19 @@ NODE v0.8.0 or higher
 - Deep conversion is done by default.
 - Pass **false** for shallow conversion.
 
+#### Configure Options
+```javascript
+  let configureOptions = {
+    deep: true, // whether or not to do deep conversion
+    discard: [] // discard this values in the result array
+  };
+  
+  let arr = toAssociativeArray({}, configureOptions);
+```
+
 ## Examples
 
-#### Simple Conversion
+##### Simple Conversion
 ```javascript
 const toAssociativeArray = require('object-to-associative-array');
 
@@ -43,7 +52,29 @@ let arr = toAssociativeArray(obj);
 // [{"a":1},{"b":2},{"c":[{"d":4},{"e":5}]}]
 ```
 
-#### Deep Convertion
+##### Conversion With Discard
+```javascript
+const toAssociativeArray = require('object-to-associative-array');
+
+let opts = {
+  discard: [null, undefined]
+}
+
+let obj = {
+  a: 1,
+  b: null,
+  c: {
+    d: 4,
+    e: undefined
+  }
+};
+
+let arr = toAssociativeArray(obj, opts);
+[{"a":1},{"c":[{"d":4}]}]
+```
+
+##### Deep Convertion
+>Default convertion is default.
 ```javascript
 const toAssociativeArray = require('object-to-associative-array');
 
@@ -67,9 +98,11 @@ let arr = toAssociativeArray(obj);
 // [{"a":1},{"c":[{"e":[{"0":"e1"},{"1":"e2"}]},{"g":[{"i":9},{"j":[{"0":[{"k":11},{"l":12}]}]}]}]}]
 ```
 
-#### Shallow Conversion
+##### Shallow Conversion
 ```javascript
 const toAssociativeArray = require('./index');
+
+let opts = {deep: false};
 
 let obj = {
   a: 1,
@@ -87,7 +120,7 @@ let obj = {
   }
 };
 
-let arr = toAssociativeArray(obj, false);
+let arr = toAssociativeArray(obj, opts);
 // [{"a":1},{"c":{"e":["e1","e2"],"g":{"i":9,"j":[{"k":11,"l":12}]}}}]
 ```
 

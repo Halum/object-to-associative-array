@@ -16,7 +16,8 @@
   "keywords": [
     "object-to-array",
     "associative-array",
-    "php-associative-array"
+    "php-associative-array",
+    "to-array"
   ],
   "author": "Sajjad Hossain",
   "license": "MIT",

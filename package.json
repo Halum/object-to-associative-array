@@ -1,6 +1,6 @@
 {
   "name": "object-to-associative-array",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Converts an object to array of object with {key:value} pair like PHP associative array",
   "main": "index.js",
   "engines": {
